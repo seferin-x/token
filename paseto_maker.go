@@ -11,6 +11,7 @@ import (
 type TokenMaker struct {
 	paseto       *paseto.V2
 	symmetricKey []byte
+	Value        string
 }
 
 // errors
@@ -34,9 +35,15 @@ func NewTokenMaker(symmetricKey string) (*TokenMaker, error) {
 	return maker, nil
 }
 
-// CreateToken creates a new token with payload p
+// CreateToken creates a new token and returns it, with payload p,
+// and any errors.
+//
+// The last token generated can be retreived with TokenMaker.Value.
 func (maker *TokenMaker) CreateToken(payload map[string]interface{}) (token string, p map[string]interface{}, err error) {
 	token, err = maker.paseto.Encrypt(maker.symmetricKey, payload, nil)
+	if err == nil {
+		maker.Value = token
+	}
 	return token, payload, err
 }
 
