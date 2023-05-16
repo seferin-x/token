@@ -23,7 +23,7 @@ var (
 //
 // Symmetric key must be 32 character string often
 // stored in an env variable in each service.
-func NewPasetoMaker(symmetricKey string) (*TokenMaker, error) {
+func NewTokenMaker(symmetricKey string) (*TokenMaker, error) {
 	if len(symmetricKey) != KeySize {
 		return nil, fmt.Errorf("invalid key size: must be exactly %d characters", KeySize)
 	}
