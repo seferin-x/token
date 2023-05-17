@@ -30,7 +30,7 @@ Send your token with requests in the "authorization" header:
 Use the token maker on receiving service to verify token in middleware for example:
 
 ```go
-authHeader := ctx.GetHeader(authorizationHeaderKey)
+authHeader := ctx.GetHeader("authorization")
 
 if len(authHeader) == 0 {
     err := errors.New("no authorization header")
@@ -45,4 +45,4 @@ if err != nil {
 
 Or use the gin middleware provided in `github.com/seferin-x/token/middleware`:
 
-`router.GET("/api/alive").Use(middleware.GinAuthMiddleware(*server.token))`
+`router.GET("/api/alive").Use(middleware.GinAuthMiddleware(token))`
