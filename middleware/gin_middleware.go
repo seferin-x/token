@@ -17,7 +17,7 @@ func errorResponseJson(err error) gin.H {
 	return gin.H{"error": err.Error()}
 }
 
-func ginAuthMiddleware(t token.TokenMaker) gin.HandlerFunc {
+func GinAuthMiddleware(t token.TokenMaker) gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		authHeader := ctx.GetHeader(authorizationHeaderKey)
 		if len(authHeader) == 0 {
