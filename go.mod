@@ -6,7 +6,6 @@ require (
 	github.com/gin-gonic/gin v1.9.0
 	github.com/o1egl/paseto v1.0.0
 	github.com/stretchr/testify v1.8.2
-	github.com/seferin-x/token/middleware v1.0.0
 
 )
 
