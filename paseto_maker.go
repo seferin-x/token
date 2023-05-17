@@ -38,7 +38,7 @@ func NewTokenMaker(symmetricKey string) (*TokenMaker, error) {
 // CreateToken creates a new token and returns it, with payload p,
 // and any errors.
 //
-// The last token generated can be retreived with TokenMaker.Value.
+// The last token generated can be retreived with Value.
 func (maker *TokenMaker) CreateToken(payload map[string]interface{}) (token string, p map[string]interface{}, err error) {
 	token, err = maker.paseto.Encrypt(maker.symmetricKey, payload, nil)
 	if err == nil {
@@ -49,7 +49,7 @@ func (maker *TokenMaker) CreateToken(payload map[string]interface{}) (token stri
 
 // VerifyToken checks if the token is valid or not.
 //
-// Will return payload if valid.
+// Will return payload and no error if valid.
 func (maker *TokenMaker) VerifyToken(token string) (map[string]interface{}, error) {
 	var payload map[string]interface{}
 
