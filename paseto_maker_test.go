@@ -26,7 +26,7 @@ func TestPasetoMaker(t *testing.T) {
 	p := make(map[string]interface{})
 	p["name"] = text
 
-	maker, err := NewPasetoMaker(RandomString(32))
+	maker, err := NewTokenMaker(RandomString(32))
 	require.NoError(t, err)
 
 	token, payload1, err := maker.CreateToken(p)
