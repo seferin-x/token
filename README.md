@@ -1,7 +1,7 @@
 # token
 A (really) simple package for service to service authorization.
 
-Basically a wrapper for github.com/o1egl/paseto with a method for storing arbitrary service in token payload (further authentication keys etc).
+Basically a wrapper for github.com/o1egl/paseto with a method for storing arbitrary service keys in token payload (further authentication keys, rbac, user details, etc).
 
 ## install
 
@@ -22,11 +22,11 @@ Create your service token with any keys you would like to pass:
     t.CreateToken(payload)
 `
 
-Send your token with requests
-    `  
+Send your token with requests in the "authorization" header:
+ 
 `request.Header.Set("authorization", t.Value)`
 
-Use the token maker to verify token in middleware for example:
+Use the token maker on receiving service to verify token in middleware for example:
 
 `
 	authHeader := ctx.GetHeader(authorizationHeaderKey)
