@@ -23,10 +23,12 @@ func GinAuthMiddleware(t token.TokenMaker) gin.HandlerFunc {
 		if len(authHeader) == 0 {
 			err := errors.New("no authorization header")
 			ctx.AbortWithStatusJSON(http.StatusUnauthorized, errorResponseJson(err))
+			return
 		}
 		payload, err := t.VerifyToken(authHeader)
 		if err != nil {
 			ctx.AbortWithStatusJSON(http.StatusUnauthorized, errorResponseJson(err))
+			return
 		}
 		ctx.Set(authorizationPayloadKey, payload)
 		ctx.Next()

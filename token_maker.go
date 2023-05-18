@@ -20,10 +20,10 @@ var (
 	KeySize         = int(32)
 )
 
-// NewPasetoMaker creates a new PasetoMaker.
+// NewTokenMaker creates a new TokenMaker.
 //
-// Symmetric key must be 32 character string often
-// stored in an env variable in each service.
+// Symmetric key must be 32 character string, often
+// stored in an env variable or secret in each service.
 func NewTokenMaker(symmetricKey string) (*TokenMaker, error) {
 	if len(symmetricKey) != KeySize {
 		return nil, fmt.Errorf("invalid key size: must be exactly %d characters", KeySize)
