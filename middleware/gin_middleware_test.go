@@ -41,7 +41,7 @@ func addAuthorization(
 	require.NoError(t, err)
 	require.NotEmpty(t, payloadOut)
 
-	authorizationHeader := token
+	authorizationHeader := "Bearer " + token
 	request.Header.Set(authorizationHeaderKey, authorizationHeader)
 }
 
