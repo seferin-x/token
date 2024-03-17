@@ -19,6 +19,7 @@ import (
 // url - request address
 //
 // method - GET, POST, PUT, DELETE, etc
+
 func NewMicroserviceJSONRequest(token string, requestBody map[string]any, url string, method string) (code int, response interface{}, err error) {
 
 	//create a JSON object to include in the request body
@@ -40,7 +41,6 @@ func NewMicroserviceJSONRequest(token string, requestBody map[string]any, url st
 	}
 
 	//make the request
-
 	//create an HTTP client and send the request
 	client := &http.Client{}
 	res, err := client.Do(req)
